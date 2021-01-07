@@ -54,8 +54,8 @@ keyboard1.row('Хочу пёсу!', 'Хочу коту!')
 
 func_dict = {
     'message': bot.send_message,
-    'photo': bot.send_photo,
-    'mp4': bot.send_animation
+    'mp4': bot.send_animation,
+    'photo': bot.send_photo # not currently in use, left as an example
 }
 animal_dict = {
     'Хочу пёсу!': 'собака',
