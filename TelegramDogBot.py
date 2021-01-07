@@ -10,8 +10,8 @@ from token import TOKEN
         TOKEN = 'PLACE_YOUR_TOKEN_HERE'
 """
 
-
 # TODO: add documentation wherever is possible
+
 
 def get_mp4_url(animal):
     base_url = ('http://joyreactor.cc/search/+/', '?tags=гифки%2C+')
