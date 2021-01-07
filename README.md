@@ -1,4 +1,5 @@
 # TelegramDogBot
 Telegram bot that sends gifs with dogs and cats
 
-Requirements: pytelegrambotapi, bs4
+Requirements:
+pip install pytelegrambotapi, bs4
