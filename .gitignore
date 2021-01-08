@@ -1,3 +1,4 @@
-token.py
+mytoken.py
 .venv/
 .vscode/
+__pycache__/
