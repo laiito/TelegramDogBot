@@ -1,5 +1,5 @@
 # <p align="center">TelegramDogBot
-<p align="center">Telegram bot that sends random gifs with doggoes and other animals
+<p align="center">Telegram bot that sends random gifs with dogs or cats (parrots will be added soon)
 
 * Install requirements:
 ```
