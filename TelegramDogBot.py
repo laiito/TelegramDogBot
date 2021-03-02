@@ -5,9 +5,7 @@ import random
 import time
 from bs4 import BeautifulSoup
 
-# from mytoken import MY_TOKEN
-import os
-MY_TOKEN = os.environ['MY_TOKEN']
+from mytoken import MY_TOKEN
 """
     Create 'mytoken.py' with your HTTP API access token, e.g.:
         MY_TOKEN = 'PLACE_YOUR_TOKEN_HERE'
