@@ -1,14 +1,16 @@
-import telebot
-from animal import *
+import asyncio
+from aiogram import Bot, Dispatcher
+from aiogram.types import ReplyKeyboardMarkup
+from environs import Env
+from animals import ANIMAL_DICT
 
-from mytoken import MY_TOKEN
-"""
-    Create 'mytoken.py' with your HTTP API access token, e.g.:
-        MY_TOKEN = 'PLACE_YOUR_TOKEN_HERE'
-"""
+env = Env()
+env.read_env()
+MY_TOKEN = env.str("MY_TOKEN")
 
+loop = asyncio.get_event_loop()
+bot = Bot(token=MY_TOKEN)
+dp = Dispatcher(bot, loop=loop)
 
-bot = telebot.AsyncTeleBot(MY_TOKEN)
-keyboard = telebot.types.ReplyKeyboardMarkup(True)
-keyboard.row(*AnimatedAnimal.ANIMAL_DICT)
-bot.infinity_polling(True)
+keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+keyboard.row(*ANIMAL_DICT)

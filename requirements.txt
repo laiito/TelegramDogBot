@@ -1,4 +1,5 @@
-﻿pyTelegramBotAPI
+﻿aiogram
 requests
 beautifulsoup4
 lxml
+environs

@@ -3,28 +3,30 @@ import random
 import time
 from bs4 import BeautifulSoup
 
+BASE_URL = 'http://joyreactor.cc/search/+/{0}?tags=гифки%2C+{1}'
+# ANIMAL_DICT = {
+#    emoji_code: (string_for_url, number_of_pages)
+#   }
+ANIMAL_DICT = {
+    u'\U0001F436': ('собака', 100),  # dog
+    u'\U0001F431': ('котэ', 100),    # cat
+    u'\U0001f99c': ('попугай', 61),  # parrot
+    u'\U0001F439': ('хомяк', 29)     # hamster
+}
+
 
 class AnimatedAnimal(object):
-    BASE_URL = 'http://joyreactor.cc/search/+/{0}?tags=гифки%2C+{1}'
-    # ANIMAL_DICT = {
-    #    emoji_code: (string_for_url, number_of_pages)
-    #   }
-    ANIMAL_DICT = {
-        u'\U0001F436': ('собака', 100),  # dog
-        u'\U0001F431': ('котэ', 100),    # cat
-        u'\U0001f99c': ('попугай', 61),  # parrot
-        u'\U0001F439': ('хомяк', 29)     # hamster
-    }
 
     def __init__(self, animal, chat):
         self.animal_string = animal[0]
         self.max_pages = animal[1]
         self.chat = chat
+        self.set_url()
 
     def set_url(self):
         self.page_number = random.randint(1, self.max_pages)
         self.post_number = random.randint(0, 9)
-        self.search_page_url = AnimatedAnimal.BASE_URL.format(
+        self.search_page_url = BASE_URL.format(
             self.page_number, self.animal_string)
 
         contents = requests.get(self.search_page_url).text
@@ -41,7 +43,10 @@ class AnimatedAnimal(object):
         else:
             self.mp4_url = self.gif_url.replace('/post/', '/post/mp4/', 1)
             self.mp4_url = self.mp4_url.replace('.gif', '.mp4')
-            self.active_url = self.mp4_url
+            if self.mp4_url_is_valid():
+                self.active_url = self.mp4_url
+            else:
+                self.active_url = self.gif_url
 
     def mp4_url_is_valid(self):
         last_slash_pos = self.mp4_url.rfind('/')
