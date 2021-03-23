@@ -9,9 +9,9 @@ import time
 # TODO: add documentation wherever is possible
 
 
-async def send_animal(animal):
+async def send_animal(animal: AnimatedAnimal):
     try:
-        await bot.send_animation(animal.chat.id, animal.active_url, reply_markup=keyboard)
+        await animal.message.answer_animation(animal.active_url, reply_markup=keyboard)
 
     except TelegramAPIError as e:
         print_log('Error', 'try_send_mp4')
@@ -36,7 +36,7 @@ async def get_message(message: types.Message):
         await start_message(message)
     else:
         print_log(animal_type[0], message.chat.first_name)
-        unswer = AnimatedAnimal(animal_type, message.chat)
+        unswer = AnimatedAnimal(animal_type, message)
         await send_animal(unswer)
         del unswer
 

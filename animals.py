@@ -1,3 +1,4 @@
+from aiogram.types.message import Message
 import requests
 import random
 import time
@@ -17,10 +18,10 @@ ANIMAL_DICT = {
 
 class AnimatedAnimal(object):
 
-    def __init__(self, animal, chat):
+    def __init__(self, animal, message: Message):
         self.animal_string = animal[0]
         self.max_pages = animal[1]
-        self.chat = chat
+        self.message = message
         self.set_url()
 
     def set_url(self):
