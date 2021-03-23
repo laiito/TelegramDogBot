@@ -40,7 +40,7 @@ class AnimatedAnimal(object):
         except:
             print_log('Error', 'get_gif_url')
             time.sleep(2)
-            self.get_url()
+            self.set_url()
         else:
             self.mp4_url = self.gif_url.replace('/post/', '/post/mp4/', 1)
             self.mp4_url = self.mp4_url.replace('.gif', '.mp4')
