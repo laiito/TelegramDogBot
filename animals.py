@@ -17,10 +17,8 @@ ANIMAL_DICT = {
 
 
 class AnimatedAnimal(object):
-
-    def __init__(self, animal, message: Message):
-        self.animal_string = animal[0]
-        self.max_pages = animal[1]
+    def __init__(self, animal_dict, message: Message):
+        self.animal_string, self.max_pages = animal_dict
         self.message = message
         self.set_url()
 
